@@ -1,0 +1,21 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{physics}
+
+\title{Variational Quantum Eigensolvers}
+\author{Adrian Harkness}
+\begin{document}
+\maketitle
+\date{}
+
+\begin{abstract}
+Hybrid quantum-classical algorithms are believed to provide advantages over purely classical algorithms while having some resilience against the high error rates in current quantum computing hardware.  We examine one such hybrid algorithm called the Variational Quantum Eigensolver (VQE) that estimates the ground state of a given Hamiltonian.  Despite the exponentially large size of the dimension of the problem space, VQE shows the potential to model these quantum states in polynomial time.  In addition to VQE, we also discuss the Variational Quantum Deflation algorithm and the Subspace-Search Variational Quatum Eigensolver.  Both of these algorithms extend the VQE framework to calculate the excited states of Hamiltonians in addition to the ground state.  
+\end{abstract}
+
+\input{Introduction}
+
+
+\bibliographystyle{apalike} % We choose the "IEEEtran" reference style
+\bibliography{refs} % Entries are in the refs.bib file
+
+\end{document}

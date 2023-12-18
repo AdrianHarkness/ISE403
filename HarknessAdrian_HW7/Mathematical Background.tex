@@ -1,0 +1,33 @@
+\subsection{Mathematical Background}
+
+\subsubsection{Quantum Bits}
+In classical computing, information is processed using bits, which can exist in one of two states: 0 or 1. Quantum computing, on the other hand, processes quantum bits (called qubits) that exist in a superposition of states. This means that qubits exist in a linear combination of $\ket{0}$ and $\ket{1}$ and are represented by a quantum state $\ket{\psi} = \alpha\ket{0} + \beta\ket{1}$, where $\alpha$ and $\beta$ are complex numbers, and $\mid\alpha\mid^2 + \mid\beta\mid^2 = 1$.  The probability of measuring the state $\ket{\psi}$ to be $\ket{0}$ is $\mid\alpha\mid^2$, and the probability of measuring the state $\ket{\psi}$ to be $\ket{1}$ is $\mid\beta\mid^2$.  While $\alpha$ and $\beta$ may look like probabilities, their ability to take on negative and complex values leads to interference patterns in the amplitudes of multi-qubit systems that could not exist with strictly positive and real probabilities.
+
+The power of qubits lies in their ability to be entangled, a phenomenon where the state of one qubit becomes dependent on the state of another, regardless of the physical distance between them. Entanglement allows quantum computers to process information in a massively parallel way, offering the potential for exponential speedup in solving certain problems.  Whereas a general two qubit system would take the form $\ket{\psi} = \alpha\ket{00} + \beta\ket{01} + \gamma\ket{10} + \delta\ket{11}$, an example of an entangled two qubit system could look like $\ket{\psi} = \alpha\ket{00} + \beta\ket{11}$.  In this case, although each qubit is individually in a superposition of 0 and 1, knowledge of one qubit's state immediately gives knowledge of the other qubit's state because they are always the in the same state: both 0 or both 1.  Another example of an entangled two-qubit state is $\ket{\psi} = \alpha\ket{01} + \beta\ket{10}$.  Here, we know that the two qubits are always in opposite states.
+
+\subsubsection{Dirac Notation}
+Quantum states are represented using Dirac notation, a mathematical framework developed by physicist Paul Dirac. In this notation, a quantum state $\ket{\psi}$ is represented as a column vector called a ket vector. For example, the quantum state of a qubit in superposition can be expressed as $\ket{\psi} = \alpha\ket{0} + \beta\ket{1} = \begin{bmatrix} \alpha & \beta \end{bmatrix}^T$.
+
+The corresponding bra vector, denoted as $\bra{\psi}$, is the conjugate transpose of the ket vector. If $\ket{\psi} = \begin{bmatrix} \alpha & \beta \end{bmatrix}^T$, then $\bra{\psi} = \alpha^*\bra{0} + \beta^*\bra{1} = \begin{bmatrix} \alpha^* & \beta^* \end{bmatrix}$, where $^*$ denotes the complex conjugate.
+
+Extending to higher dimensions, the quantum state of an n-qubit quantum computer is a ket vector of $2^n$ complex-valued coefficients.
+
+
+\subsubsection{The Hamiltonian Operator}
+The Hamiltonian operator $H$ plays a central role in quantum mechanics. It represents the total energy of a quantum system and is crucial for describing the evolution of the system over time. For a quantum system with a Hamiltonian operator $H$, the time-dependent Schrödinger equation is given by
+
+\begin{equation*}
+-\frac{\hbar^2}{2m} \nabla^2 \psi(\vec{r}, t) + V(\vec{r}, t) \Psi(\vec{r}, t) = i\hbar \frac{\partial \Psi(\vec{r}, t)}{\partial t}
+\end{equation*}
+which reduces to $H\ket{\psi} = E\psi$
+where $\hbar$ is the reduced Planck constant and $E$ is the energy of the state.  It is clear in this form that the Schrödinger equation is an eigenvalue equation relating an eigenvector of a Hamiltonian to its energy.  
+
+The eigenvectors $\ket{\psi}$ are called eigenstates, the lowest energy eigenstate of a Hamiltonian is called the ground state, and all other eigenstates are excited states.
+
+\subsubsection{Hermitian Operators and Expectation Values}
+In quantum mechanics, an observable is a property of a quantum state whose value can be determined by performing a certain physical measurement on the state.  Common examples include position, momentum, and energy measurements.  Because the measurement outcome must always yield a real value (a complex valued position measurement, for example, would be difficult to interpret physically), observables correspond to Hermitian matrices which have the property that they only admit real eigenvalues.
+
+Pauli matrices are a set of 2-by-2 matrices that are both unitary and Hermitian.  Importantly for the Variational Quantum Eigensolver, tensor products of Pauli matrices form an orthonormal basis for the space of all Hermitian matrices.  In other words, any Hermitian matrix can be expressed as a real linear combination of tensor products of Pauli matrices.
+
+The expectation value of an observable represents the average value that one would expect to see over repeated measurements of that observable on identically prepared systems. For an observable with associated matrix operator $A$, the expectation value with respect to state $\ket{\psi}$ is $\expval{A} = \bra{\psi}A\ket{\psi}$.  The calculation is performed by multiplying the matrix $A$ with the ket vector $\ket{\psi}$, then taking the inner product with the bra vector $\bra{\psi}$.  The expectation value of the Hamiltonian operator is particularly important, as it gives the average energy of the system with respect to a given state $\ket{\psi}$.
+
